@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	let conversationMemory = [];
 
 	// 이미지 URL 설정
-	const aiAvatarUrl = './nmhschool_files/AI_assistant.png'; // AI 아이콘
+	const aiAvatarUrl = 'AI_assistant.png'; // AI 아이콘
 	const userAvatarUrl = 'https://cdn-icons-png.flaticon.com/512/847/847969.png'; // 사용자 아이콘
 
 	// 챗봇 토글 버튼 클릭 이벤트
