@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		try {
 			console.log('📤 POST 요청 전송:', requestData);
 
-			const response = await fetch('http://localhost:8000/api/chat/sse', {
+			const response = await fetch('http://127.0.0.1:5001/schooldemo-1701f/us-central1/api/chat/sse', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
