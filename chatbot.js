@@ -225,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			console.log('📤 POST 요청 전송:', requestData);
 
 			// ✅ 수정 후 (73번째 줄)
-			const response = await fetch('http://127.0.0.1:5001/schooldemo-1701f/us-central1/fastapi_handler/api/chat/stream', {
+			const response = await fetch('http://127.0.0.1:5001/schooldemo-1701f/us-central1/fastapi_handler/api/chat/sse', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
