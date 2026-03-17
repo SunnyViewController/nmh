@@ -223,8 +223,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		try {
 			console.log('📤 POST 요청 전송:', requestData);
-
-			const response = await fetch('http://127.0.0.1:5001/schooldemo-1701f/us-central1/chat_stream', {
+			// 배포된 URL로 변경
+			const response = await fetch('https://uscentral1-schooldemo-1701f.cloudfunctions.net/chat_stream', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
