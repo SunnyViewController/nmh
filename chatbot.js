@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		try {
 			console.log('📤 POST 요청 전송:', requestData);
 
-			const response = await fetch('https://chat-stream-id5evmwhza-uc.a.run.app', {
+			const response = await fetch('https://chat-stream-id5evmwhza-uc.a.run.app/chat_stream', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
