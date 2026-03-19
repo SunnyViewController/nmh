@@ -226,6 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			const response = await fetch('https://chat-stream-id5evmwhza-uc.a.run.app/chat_stream', {
 				method: 'POST',
+				mode: 'cors',  // ✅ CORS 모드 명시
+				credentials: 'omit',  // ✅ credentials 설정
 				headers: {
 					'Content-Type': 'application/json',
 				},
@@ -235,6 +237,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (!response.ok) {
 				throw new Error(`HTTP error! status: ${response.status}`);
 			}
+
 
 			// 로딩 표시 제거
 			loadingContainer.remove();
