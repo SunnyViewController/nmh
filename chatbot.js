@@ -1,5 +1,6 @@
 // chatbot.js 파일 내용 
 
+
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function () {
 	// 요소 선택
