@@ -3612,6 +3612,11 @@ background-position: -3570px 0;
                         padding-bottom: calc(10px + env(safe-area-inset-bottom));
                     }
 
+                    .chatbot-header {
+                        flex-shrink: 0; /* 푸터가 줄어들지 않도록 */
+                        padding: 10px 12px;
+                    }
+
                     #chatbotInput {
                         min-height: 44px;
                         font-size: 16px; /* iOS 자동 줌 방지 */
