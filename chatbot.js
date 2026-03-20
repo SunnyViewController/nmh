@@ -1,6 +1,5 @@
 // chatbot.js 파일 내용 
 
-
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', function () {
 	// 요소 선택
@@ -56,6 +55,31 @@ document.addEventListener('DOMContentLoaded', function () {
 			sendMessageToBackend();
 		}
 	});
+
+	// chatbot.js 파일에 추가
+
+	// 모바일 키보드 열릴 때 레이아웃 조정
+	chatbotInput.addEventListener('focus', function () {
+		if (window.innerWidth <= 600) {
+			// 모바일에서는 챗봇 창을 위로 올림
+			chatbotWindow.style.bottom = '200px';
+			chatbotWindow.style.height = '60vh';
+
+			// 메시지 영역 스크롤
+			setTimeout(() => {
+				chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+			}, 300);
+		}
+	});
+
+	chatbotInput.addEventListener('blur', function () {
+		if (window.innerWidth <= 600) {
+			// 원래 위치로 복원
+			chatbotWindow.style.bottom = '100px';
+			chatbotWindow.style.height = '80vh';
+		}
+	});
+
 
 	// 현재 시간 포맷팅 함수
 	function getCurrentTime() {
