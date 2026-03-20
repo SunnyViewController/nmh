@@ -3211,6 +3211,13 @@ background-position: -3570px 0;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 }
 
+                .chatbot-body {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                    min-height: 0; /* 중요 */
+                }
+
                 #chatbotCloseBtn {
                     background: rgba(255, 255, 255, 0.2);
                     border: none;
@@ -3584,6 +3591,12 @@ background-position: -3570px 0;
                         width: 90vw;
                         max-height: 90vh;
                         bottom: 100px;
+                    }
+
+                    .chatbot-body {
+                        flex: 1 1 auto;
+                        min-height: 0;
+                        overflow: hidden; /* 내용이 넘치지 않도록 */
                     }
 
                     .message-content-wrapper {
