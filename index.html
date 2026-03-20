@@ -3190,7 +3190,7 @@ background-position: -3570px 0;
                     position: absolute;
                     bottom: 100px;
                     right: 0;
-                    width: 500px;
+                    width: 600px;
                     height: 550px;
                     background: white;
                     border-radius: 24px;
@@ -3377,13 +3377,9 @@ background-position: -3570px 0;
 
                 /* 입력 영역 */
                 .chatbot-footer {
-                    padding: 12px 15px;
+                    padding: 16px 20px;
                     background: white;
                     border-top: 1px solid #e5e7eb;
-                    position: sticky;
-                    bottom: 0;
-                    /* iOS Safe Area 대응 추가 */
-                    padding-bottom: calc(12px + env(safe-area-inset-bottom));
                 }
 
                 .chatbot-input {
@@ -3585,9 +3581,7 @@ background-position: -3570px 0;
                 /* 반응형 */
                 @media (max-width: 600px) {
                     .chatbot-footer {
-                        flex-shrink: 0; /* 푸터가 줄어들지 않도록 */
-                        padding: 10px 12px;
-                        padding-bottom: calc(10px + env(safe-area-inset-bottom));
+                        padding: 12px 15px;
                         position: sticky;
                         bottom: 0;
                         background: white;
@@ -3596,12 +3590,6 @@ background-position: -3570px 0;
 
                     .chatbot-input {
                         gap: 8px;
-                    }
-
-                    .chatbot-body {
-                        display: flex;
-                        flex-direction: column;
-                        height: 100%;
                     }
 
                     #chatbotInput {
@@ -3620,18 +3608,15 @@ background-position: -3570px 0;
                     }
 
                     #chatbotWindow {
-                        height: calc(100vh - 150px) !important; /* 중요: vh 단위 사용 */
-                        max-height: none;
-                        bottom: 80px;
-                        position: fixed;
+                        width: 90vw;
+                        height: 70vh;
+                        right: 5vw;
+                        bottom: 100px;
                     }
 
-                    /* 메시지 영역 높이 자동 조정 */
                     #chatbotMessages {
-                        flex: 1;
-                        min-height: 0; /* flex 아이템이 축소되도록 */
-                        overflow-y: auto;
-                        height: auto !important;
+                        height: calc(100% - 130px); /* 푸터 높이 고려 */
+                        max-height: none;
                     }
 
                     .message-content-wrapper {
