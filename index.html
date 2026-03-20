@@ -3582,8 +3582,7 @@ background-position: -3570px 0;
                 @media (max-width: 600px) {
                     #chatbotWindow {
                         width: 90vw;
-                        height: 70vh;
-                        right: 5vw;
+                        max-height: 90vh;
                         bottom: 100px;
                     }
 
@@ -3610,6 +3609,7 @@ background-position: -3570px 0;
                         flex-shrink: 0; /* 푸터가 줄어들지 않도록 */
                         padding: 10px 12px;
                         padding-bottom: 10px 12px;
+                        position: sticky;
                     }
 
                     .chatbot-header {
