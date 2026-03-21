@@ -3602,7 +3602,6 @@ background-position: -3570px 0;
                         flex: 1 1 auto;
                         min-height: 0;
                         overflow-y: auto;
-                        padding-bottom: 60px;
                     }
 
                     .message-content-wrapper {
@@ -3641,6 +3640,13 @@ background-position: -3570px 0;
                         font-size: 16px; /* iOS 자동 줌 방지 */
                     }
 
+                    #chatbotSendBtn {
+                        /* 터치 영역 확대 */
+                        min-width: 44px;
+                        min-height: 44px;
+                        position: relative;
+                        z-index: 101; /* 다른 요소보다 위에 */
+                    }
                 }
 
                     /* 최종 CSS 완성 */
