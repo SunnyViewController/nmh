@@ -3240,7 +3240,7 @@ background-position: -3570px 0;
                     }
 
                 #chatbotMessages {
-                    /*flex: 1;  .chatbot-body flex duplicated */
+                    /*flex: 1; chat */
                     padding: 15px;
                     overflow-y: auto;
                     /* height: 400px; ← 이 줄 삭제! */
@@ -3590,18 +3590,14 @@ background-position: -3570px 0;
                 @media (max-width: 600px) {
                     #chatbotWindow {
                         width: 90vw;
-                        height: 80vh;
-                        max-height: 600px;
-                        min-height: 400px;
+                        max-height: 90vh;
                         bottom: 100px;
-                        position: fixed;
                     }
 
                     .chatbot-body {
-                        flex: 1;
+                        flex: 1 1 auto;
                         min-height: 0;
                         overflow: hidden; /* 내용이 넘치지 않도록 */
-                        position: relative;
                     }
 
                     .message-content-wrapper {
@@ -3626,50 +3622,28 @@ background-position: -3570px 0;
                     .chatbot-footer {
                         flex-shrink: 0; /* 푸터가 줄어들지 않도록 */
                         padding: 10px 12px;
-                        padding-bottom: 10px;
+                        padding-bottom: 10px ;
                         position: sticky;
-                        height: 70px;
                     }
 
                     .chatbot-header {
-                        height: 60px;
-                        position: sticky;
                         flex-shrink: 0; /* 푸터가 줄어들지 않도록 */
                         padding: 10px 12px;
                     }
 
-                    /* 입력창과 버튼 강제 표시 */
-                    .chatbot-input {
-                        display: flex !important;
-                        width: 100%;
-                        gap: 10px;
-                    }
-
                     #chatbotInput {
-                        flex: 1;
-                        min-height: 44px;
-                        font-size: 16px;
                         display: block !important;
                         visibility: visible !important;
-                        opacity: 1 !important;
+                        min-height: 44px;
+                        font-size: 16px; /* iOS 자동 줌 방지 */
                     }
 
                     #chatbotSendBtn {
-                        width: 44px;
-                        height: 44px;
-                        min-width: 44px;
-                        min-height: 44px;
                         display: flex !important;
                         visibility: visible !important;
-                        opacity: 1 !important;
-                        flex-shrink: 0;
                     }
 
                 }
-
-
-                
-
 
                     /* 최종 CSS 완성 */
 			</style>
