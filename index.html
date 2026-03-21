@@ -3590,7 +3590,9 @@ background-position: -3570px 0;
                 @media (max-width: 600px) {
                     #chatbotWindow {
                         width: 90vw;
-                        max-height: 90vh;
+                        height: 70vh !important; /* 고정 높이 */
+                        max-height: 500px !important;
+                        min-height: 500px !important;
                         bottom: 100px;
                     }
 
@@ -3632,15 +3634,8 @@ background-position: -3570px 0;
                     }
 
                     #chatbotInput {
-                        display: block !important;
-                        visibility: visible !important;
                         min-height: 44px;
                         font-size: 16px; /* iOS 자동 줌 방지 */
-                    }
-
-                    #chatbotSendBtn {
-                        display: flex !important;
-                        visibility: visible !important;
                     }
 
                 }
