@@ -3593,8 +3593,8 @@ background-position: -3570px 0;
                     #chatbotWindow {
                         /* 레이아웃 */
                         width: 90vw;
-                        height: 500px; /* JavaScript에서 덮어쓰므로 중요하지 않음 */
-                        max-height: 90vh;
+                        /*height: 500px;  JavaScript에서 덮어쓰므로 중요하지 않음
+                        max-height: 90vh; */
                         /* 위치 - JavaScript에서 position: fixed로 덮어씀 */
                         /* bottom: 20dvh; */ /* JavaScript에서 관리하므로 제거 또는 주석 */
                         /* 기본 위치를 위한 클래스 */
@@ -3614,8 +3614,9 @@ background-position: -3570px 0;
 
                         /* 2. 챗봇 창 초기 위치 클래스 (JavaScript에서 복원할 때 사용) */
                         #chatbotWindow.initial-position {
-                            bottom: 20dvh;
-                            height: 500px;
+                            top: unset;
+                            bottom: 10dvh;
+                            height: 80dvh;
                             max-height: 90vh;
                         }
 
