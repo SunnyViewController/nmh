@@ -57,52 +57,58 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	// 모바일 키보드 열릴 때 레이아웃 조정
-	// 모바일 키보드 핸들러 (개선판)
+	// JavaScript 수정본 (CSS와 완벽 호환)
 	let originalChatbotStyle = {};
 
 	chatbotInput.addEventListener('focus', function () {
 		if (window.innerWidth <= 600) {
-			// 원래 스타일 저장 (복원용)
+			// 1. 현재 스타일 저장 (초기화 시 사용)
 			originalChatbotStyle = {
-				bottom: chatbotWindow.style.bottom,
-				height: chatbotWindow.style.height,
-				position: chatbotWindow.style.position
+				bottom: chatbotWindow.style.bottom || '20dvh',
+				height: chatbotWindow.style.height || '500px',
+				maxHeight: chatbotWindow.style.maxHeight || '90vh'
 			};
 
-			// 키보드 높이 동적 계산
+			// 2. 초기 위치 클래스 제거
+			chatbotWindow.classList.remove('initial-position');
+
+			// 3. 키보드 높이 계산
 			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			const estimatedKeyboardHeight = isIOS ? 300 : 250;
-			const safeAreaBottom = 20; // 하단 안전 영역
+			const safeAreaBottom = 20;
 
-			// 챗봇 창 조정
+			// 4. 챗봇 창 위치/크기 조정
 			chatbotWindow.style.position = 'fixed';
 			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
 			chatbotWindow.style.height = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
+			chatbotWindow.style.maxHeight = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
 
-			// 부드러운 전환
-			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
+			// 5. 부드러운 전환
+			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease, max-height 0.3s ease';
 
-			// 메시지 스크롤 (Visual Viewport API 사용)
-			if (window.visualViewport) {
-				visualViewport.addEventListener('resize', adjustScrollOnKeyboard);
-			} else {
-				setTimeout(() => {
+			// 6. 메시지 스크롤
+			setTimeout(() => {
+				if (chatbotMessages) {
 					chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-				}, 350);
-			}
+				}
+			}, 350);
 		}
 	});
 
-	// 포커스 해제 시 복원
 	chatbotInput.addEventListener('blur', function () {
 		if (window.innerWidth <= 600) {
-			// 지연 복원 (키보드 애니메이션 대기)
 			setTimeout(() => {
+				// 1. 스타일 초기화
 				chatbotWindow.style.bottom = originalChatbotStyle.bottom || '';
 				chatbotWindow.style.height = originalChatbotStyle.height || '';
+				chatbotWindow.style.maxHeight = originalChatbotStyle.maxHeight || '';
 				chatbotWindow.style.position = originalChatbotStyle.position || '';
+				chatbotWindow.style.transition = '';
 
-				// Visual Viewport 리스너 제거
+				// 2. 초기 위치 클래스 다시 추가
+				chatbotWindow.classList.add('initial-position');
+
+				// 3. Visual Viewport 리스너 제거 (있는 경우)
 				if (window.visualViewport) {
 					visualViewport.removeEventListener('resize', adjustScrollOnKeyboard);
 				}
@@ -110,8 +116,31 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
+	// 페이지 로드 시 초기 위치 클래스 추가
+	document.addEventListener('DOMContentLoaded', function () {
+		if (window.innerWidth <= 600) {
+			chatbotWindow.classList.add('initial-position');
+		}
+	});
+
+	// 창 크기 변경 시 처리
+	window.addEventListener('resize', function () {
+		if (window.innerWidth > 600) {
+			// 데스크톱으로 돌아가면 모든 스타일 초기화
+			chatbotWindow.style.cssText = '';
+			chatbotWindow.classList.remove('initial-position');
+		} else {
+			// 모바일로 돌아가면 초기 위치 클래스 추가
+			if (!chatbotWindow.classList.contains('initial-position')) {
+				chatbotWindow.classList.add('initial-position');
+			}
+		}
+	});
+
 	function adjustScrollOnKeyboard() {
-		chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+		if (chatbotMessages) {
+			chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+		}
 	}
 
 
