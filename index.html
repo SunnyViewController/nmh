@@ -3703,6 +3703,14 @@ background-position: -3570px 0;
                             background: white;
                         }
 
+                    .chatbot-input {
+                        flex: 1; /* ★ 이 줄을 추가합니다. */
+                        /* 아래는 기존 글로벌 .chatbot-input 에 있는 속성이지만, 명시적으로 여기에 다시 정의해도 됩니다. */
+                        display: flex;
+                        gap: 12px;
+                        align-items: center;
+                    }
+
                     /* 10. 전송 버튼 */
                     #chatbotSendBtn {
                         width: 44px;
