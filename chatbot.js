@@ -56,29 +56,64 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
-	// chatbot.js 파일에 추가
-
 	// 모바일 키보드 열릴 때 레이아웃 조정
+	// 모바일 키보드 핸들러 (개선판)
+	let originalChatbotStyle = {};
+
 	chatbotInput.addEventListener('focus', function () {
 		if (window.innerWidth <= 600) {
-			// 모바일에서는 챗봇 창을 위로 올림
-			chatbotWindow.style.bottom = '200px';
-			chatbotWindow.style.height = '60vh';
+			// 원래 스타일 저장 (복원용)
+			originalChatbotStyle = {
+				bottom: chatbotWindow.style.bottom,
+				height: chatbotWindow.style.height,
+				position: chatbotWindow.style.position
+			};
 
-			// 메시지 영역 스크롤
-			setTimeout(() => {
-				chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-			}, 300);
+			// 키보드 높이 동적 계산
+			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+			const estimatedKeyboardHeight = isIOS ? 300 : 250;
+			const safeAreaBottom = 20; // 하단 안전 영역
+
+			// 챗봇 창 조정
+			chatbotWindow.style.position = 'fixed';
+			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
+			chatbotWindow.style.height = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
+
+			// 부드러운 전환
+			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
+
+			// 메시지 스크롤 (Visual Viewport API 사용)
+			if (window.visualViewport) {
+				visualViewport.addEventListener('resize', adjustScrollOnKeyboard);
+			} else {
+				setTimeout(() => {
+					chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+				}, 350);
+			}
 		}
 	});
 
+	// 포커스 해제 시 복원
 	chatbotInput.addEventListener('blur', function () {
 		if (window.innerWidth <= 600) {
-			// 원래 위치로 복원
-			chatbotWindow.style.bottom = '100px';
-			chatbotWindow.style.height = '80vh';
+			// 지연 복원 (키보드 애니메이션 대기)
+			setTimeout(() => {
+				chatbotWindow.style.bottom = originalChatbotStyle.bottom || '';
+				chatbotWindow.style.height = originalChatbotStyle.height || '';
+				chatbotWindow.style.position = originalChatbotStyle.position || '';
+
+				// Visual Viewport 리스너 제거
+				if (window.visualViewport) {
+					visualViewport.removeEventListener('resize', adjustScrollOnKeyboard);
+				}
+			}, 200);
 		}
 	});
+
+	function adjustScrollOnKeyboard() {
+		chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+	}
+
 
 
 	// 현재 시간 포맷팅 함수
