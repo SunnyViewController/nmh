@@ -3695,6 +3695,7 @@ background-position: -3570px 0;
                         outline: none;
                         background: #f8f9fa;
                         box-sizing: border-box;
+                        min-width: 0; /* ★ 필수: flex 아이템 오버플로우 방지 */
                     }
 
                         #chatbotInput:focus {
@@ -3704,8 +3705,8 @@ background-position: -3570px 0;
 
                     /* 10. 전송 버튼 */
                     #chatbotSendBtn {
-                        min-width: 44px;
-                        min-height: 44px;
+                        width: 44px;
+                        height: 44px;
                         background: linear-gradient(135deg, #102e5b 0%, #1a3a6b 100%);
                         color: white;
                         border: none;
@@ -3715,9 +3716,9 @@ background-position: -3570px 0;
                         justify-content: center;
                         cursor: pointer;
                         font-size: 18px;
-                        position: relative;
-                        z-index: 101;
                         flex-shrink: 0;
+                        margin: 0;
+                        padding: 0;
                     }
 
                         #chatbotSendBtn:hover {
