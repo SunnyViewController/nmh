@@ -60,61 +60,41 @@ document.addEventListener('DOMContentLoaded', function () {
 	// JavaScript 수정본 (CSS와 완벽 호환)
 	let originalChatbotStyle = {};
 
+	// 제가 제안한 개선된 버전 핵심 부분
 	chatbotInput.addEventListener('focus', function () {
 		if (window.innerWidth <= 600) {
-			// 1. 현재 스타일 저장 (초기화 시 사용)
+			// 원래 스타일 저장
 			originalChatbotStyle = {
-				bottom: chatbotWindow.style.bottom || '20dvh',
-				height: chatbotWindow.style.height || '500px',
-				maxHeight: chatbotWindow.style.maxHeight || '90vh'
+				bottom: chatbotWindow.style.bottom,
+				height: chatbotWindow.style.height,
+				position: chatbotWindow.style.position
 			};
 
-			// 2. 초기 위치 클래스 제거
-			chatbotWindow.classList.remove('initial-position');
-
-			// 3. 키보드 높이 계산
+			// 키보드 높이 동적 계산
 			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			const estimatedKeyboardHeight = isIOS ? 300 : 250;
 			const safeAreaBottom = 20;
 
-			// 4. 챗봇 창 위치/크기 조정
+			// 챗봇 창 조정
 			chatbotWindow.style.position = 'fixed';
 			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
 			chatbotWindow.style.height = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
-			chatbotWindow.style.maxHeight = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
 
-			// 5. 부드러운 전환
-			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease, max-height 0.3s ease';
-
-			// 6. 메시지 스크롤
-			setTimeout(() => {
-				if (chatbotMessages) {
-					chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-				}
-			}, 350);
+			// 부드러운 전환
+			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
 		}
 	});
 
 	chatbotInput.addEventListener('blur', function () {
 		if (window.innerWidth <= 600) {
 			setTimeout(() => {
-				// 1. 스타일 초기화
 				chatbotWindow.style.bottom = originalChatbotStyle.bottom || '';
 				chatbotWindow.style.height = originalChatbotStyle.height || '';
-				chatbotWindow.style.maxHeight = originalChatbotStyle.maxHeight || '';
 				chatbotWindow.style.position = originalChatbotStyle.position || '';
-				chatbotWindow.style.transition = '';
-
-				// 2. 초기 위치 클래스 다시 추가
-				chatbotWindow.classList.add('initial-position');
-
-				// 3. Visual Viewport 리스너 제거 (있는 경우)
-				if (window.visualViewport) {
-					visualViewport.removeEventListener('resize', adjustScrollOnKeyboard);
-				}
 			}, 200);
 		}
 	});
+
 
 	// 페이지 로드 시 초기 위치 클래스 추가
 	document.addEventListener('DOMContentLoaded', function () {
