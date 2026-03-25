@@ -106,12 +106,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	chatbotInput.addEventListener('blur', function () {
 		if (window.innerWidth <= 600) {
-			setTimeout(() => {
+			/*setTimeout(() => {
 				chatbotWindow.style.removeProperty('bottom');
 				chatbotWindow.style.removeProperty('height');
 				chatbotWindow.style.removeProperty('position'); // 필요하다면 이것도 제거
 				chatbotWindow.style.removeProperty('transition'); // focus에서 설정했던 transition도 제거
-			}, 200);
+			}, 200);*/
 		}
 	});
 
