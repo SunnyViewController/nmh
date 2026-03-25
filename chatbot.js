@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			chatbotWindow.style.display = 'none';
 		} else {
 			chatbotWindow.style.display = 'flex';
+			// 챗봇 열릴 때 입력창에 포커스
+			if (window.innerWidth > 600) {
+				setTimeout(() => {
+					chatbotInput.focus();
+				}, 100);
+			}
 		}
 	});
 
@@ -80,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			// 챗봇 창 조정
 			chatbotWindow.style.position = 'fixed';
 			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
-			chatbotWindow.style.height = `calc(100vh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
+			chatbotWindow.style.height = `calc(100dvh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
 
 			// 부드러운 전환
 			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
@@ -362,11 +368,10 @@ document.addEventListener('DOMContentLoaded', function () {
 						conversationMemory = conversationMemory.slice(-15);
 					}
 
-					// 입력창에 포커스
 					if (window.innerWidth > 600) {
 						setTimeout(() => {
 							chatbotInput.focus();
-						}, 200);
+						}, 100);
 					}
 					break;
 				}
