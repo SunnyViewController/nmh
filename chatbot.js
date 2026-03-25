@@ -28,10 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			chatbotWindow.style.display = 'none';
 		} else {
 			chatbotWindow.style.display = 'flex';
-			// 챗봇 열릴 때 입력창에 포커스
-			setTimeout(() => {
-				chatbotInput.focus();
-			}, 100);
 		}
 	});
 
