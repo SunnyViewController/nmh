@@ -18,6 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	const aiAvatarUrl = 'AI_assistant.png'; // AI 아이콘
 	const userAvatarUrl = 'https://cdn-icons-png.flaticon.com/512/847/847969.png'; // 사용자 아이콘
 
+	if (window.innerWidth <= 600) {
+		chatbotWindow.classList.add('initial-position');
+	}
+
 	// 챗봇 토글 버튼 클릭 이벤트
 	toggleBtn.addEventListener('click', function () {
 		if (chatbotWindow.style.display === 'flex') {
@@ -97,13 +101,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
-
-	// 페이지 로드 시 초기 위치 클래스 추가
-	document.addEventListener('DOMContentLoaded', function () {
-		if (window.innerWidth <= 600) {
-			chatbotWindow.classList.add('initial-position');
-		}
-	});
 
 	// 창 크기 변경 시 처리
 	window.addEventListener('resize', function () {
