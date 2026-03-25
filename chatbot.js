@@ -37,6 +37,19 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 
+	document.addEventListener('click', function (event) {
+		// 모바일 환경에서만 작동하도록 조건 추가
+		if (window.innerWidth <= 600) {
+			if (document.activeElement === chatbotInput &&
+				!chatbotInput.contains(event.target) && // 클릭 대상이 입력창 자체가 아니거나 그 안에 포함되지 않는다면
+				!chatbotWindow.contains(event.target) && // 클릭 대상이 챗봇 창 전체 안에 포함되지 않는다면 (완전 외부 클릭)
+				chatbotWindow.style.display === 'flex' // 챗봇 창이 현재 열려있는 상태여야 함
+			) {
+				chatbotInput.blur();
+			}
+		}
+	});
+
 	// 챗봇 닫기 버튼 클릭 이벤트
 	closeBtn.addEventListener('click', function () {
 		chatbotWindow.style.display = 'none';
