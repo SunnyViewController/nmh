@@ -451,8 +451,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
-			// 입력창에 포커스
-			chatbotInput.focus();
+			if (window.innerWidth <= 600) {
+				chatbotInput.blur();
+			} else {
+				// 입력창에 포커스
+				chatbotInput.focus();
+			}
 		}
 	}
 
