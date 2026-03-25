@@ -109,9 +109,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	chatbotInput.addEventListener('blur', function () {
 		if (window.innerWidth <= 600) {
 			setTimeout(() => {
-				chatbotWindow.style.bottom = originalChatbotStyle.bottom || '';
-				chatbotWindow.style.height = originalChatbotStyle.height || '';
-				chatbotWindow.style.position = originalChatbotStyle.position || '';
+				chatbotWindow.style.removeProperty('bottom');
+				chatbotWindow.style.removeProperty('height');
+				chatbotWindow.style.removeProperty('position'); // 필요하다면 이것도 제거
+				chatbotWindow.style.removeProperty('transition'); // focus에서 설정했던 transition도 제거
 			}, 200);
 		}
 	});
