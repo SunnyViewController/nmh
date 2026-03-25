@@ -3597,10 +3597,10 @@ background-position: -3570px 0;
                     /* 1. 기본 챗봇 창 스타일 */
                     #chatbotWindow {
                         /* 레이아웃 */
-                        width: 90vw;
-                        height: 80dvh;
+                        width: 100dvh;
+                        height: 100dvh;
                         top: unset;
-                        bottom: 20dvh;
+                        bottom: 0;
                         /* 기본 위치를 위한 클래스 */
                         position: fixed;
                         left: 50%;
@@ -3619,8 +3619,10 @@ background-position: -3570px 0;
                         /* 2. 챗봇 창 초기 위치 클래스 (JavaScript에서 복원할 때 사용) */
                         #chatbotWindow.initial-position {
                             top: unset;
-                            bottom: 20dvh;
-                            height: 80dvh;
+                            bottom: 0;
+                            height: 100dvh;
+                            width: 100dvh;
+                            position: fixed;
                             max-height: 90vh;
                         }
 

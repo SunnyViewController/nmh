@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			//chatbotWindow.style.height = `calc(100dvh - ${estimatedKeyboardHeight + safeAreaBottom}px)`;
 
 			// 부드러운 전환
-			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
+			//chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
 		}
 	});
 
