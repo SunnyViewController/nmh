@@ -363,7 +363,11 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 
 					// 입력창에 포커스
-					chatbotInput.focus();
+					if (window.innerWidth > 600) {
+						setTimeout(() => {
+							chatbotInput.focus();
+						}, 200);
+					}
 					break;
 				}
 
