@@ -3589,11 +3589,17 @@ background-position: -3570px 0;
                 /* 반응형 */
                 /* 반응형 - 모바일 (600px 이하) */
                 @media (max-width: 600px) {
+                    #chatbotToggleBtn {
+                        width: 10dvh;
+                        height: 10dvh;
+                    }
+
                     /* 1. 기본 챗봇 창 스타일 */
                     #chatbotWindow {
                         /* 레이아웃 */
                         width: 90vw;
                         height: 80dvh;
+                        top: unset;
                         bottom: 20dvh;
                         /* 기본 위치를 위한 클래스 */
                         position: fixed;
@@ -3613,7 +3619,7 @@ background-position: -3570px 0;
                         /* 2. 챗봇 창 초기 위치 클래스 (JavaScript에서 복원할 때 사용) */
                         #chatbotWindow.initial-position {
                             top: unset;
-                            bottom: 10dvh;
+                            bottom: 20dvh;
                             height: 80dvh;
                             max-height: 90vh;
                         }

@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			// 챗봇 창 조정
 			chatbotWindow.style.position = 'fixed';
-			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
+			//chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
 			//chatbotWindow.style.height = `calc(100dvh - ${estimatedKeyboardHeight + safeAreaBottom}px)`;
 
 			// 부드러운 전환
