@@ -64,10 +64,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	chatbotInput.addEventListener('focus', function () {
 		if (window.innerWidth <= 600) {
 			// 원래 스타일 저장
+			const computedStyle = window.getComputedStyle(chatbotWindow);
+
 			originalChatbotStyle = {
-				bottom: chatbotWindow.style.bottom,
-				height: chatbotWindow.style.height,
-				position: chatbotWindow.style.position
+				bottom: computedStyle.bottom,
+				height: computedStyle.height,
+				position: computedStyle.position
 			};
 
 			// 키보드 높이 동적 계산
