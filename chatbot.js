@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			chatbotWindow.style.display = 'flex';
 			// 챗봇 열릴 때 입력창에 포커스
 			if (window.innerWidth > 600) {
-				setTimeout(() => {
-					chatbotInput.focus();
-				}, 100);
+				chatbotInput.focus();
 			}
 		}
 	});
@@ -94,12 +92,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			// 키보드 높이 동적 계산
 			const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 			const estimatedKeyboardHeight = isIOS ? 300 : 250;
-			const safeAreaBottom = 20;
+			const safeAreaBottom = 0;
 
 			// 챗봇 창 조정
 			chatbotWindow.style.position = 'fixed';
 			chatbotWindow.style.bottom = `${estimatedKeyboardHeight + safeAreaBottom}px`;
-			chatbotWindow.style.height = `calc(100dvh - ${estimatedKeyboardHeight + safeAreaBottom + 60}px)`;
+			chatbotWindow.style.height = `calc(100dvh - ${estimatedKeyboardHeight + safeAreaBottom}px)`;
 
 			// 부드러운 전환
 			chatbotWindow.style.transition = 'bottom 0.3s ease, height 0.3s ease';
@@ -383,9 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
 					}
 
 					if (window.innerWidth > 600) {
-						setTimeout(() => {
-							chatbotInput.focus();
-						}, 100);
+						chatbotInput.focus();
 					}
 					break;
 				}
