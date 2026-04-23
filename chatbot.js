@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		try {
 			console.log('📤 POST 요청 전송:', requestData);
 
-			const response = await fetch('https://chat-stream-id5evmwhza-uc.a.run.app/chat_stream', {
+			const response = await fetch('https://chat-stream-gmq4inexiq-uc.a.run.app/chat_stream', {
 				method: 'POST',
 				mode: 'cors',  // ✅ CORS 모드 명시
 				credentials: 'omit',  // ✅ credentials 설정
